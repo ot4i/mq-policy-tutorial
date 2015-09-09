@@ -1,0 +1,309 @@
+{
+  "version":"0.6",
+  "pageContent": 
+  {
+    "comments":"JSON object that contains data for page labels, buttons, etc.",
+      "navItems":
+      {
+        "_common":
+        {
+			"buttonBackToGallery": 
+			{
+				"name": "Back To Gallery",
+				"method": "backToGallery()",
+				"idName": "backToGallery"	
+			},
+			"buttonStartTutorial": 
+			{
+				"name": "Start Tutorial",
+				"method": "startTutorialFromDetailsScreen()",
+				"idName": "startTutorial"
+			},
+			"buttonViewDetails":
+			{
+
+				"name": "View Details",
+				"method": "viewDetails()",
+				"idName": "stepsViewDetails"
+			}
+		}
+      }  
+  },
+  "tutorial": 
+  { 
+    "_common":
+    {
+      "name":"Interacting with Queue Managers using Policies",
+      "shortDescription":"Creating MQEndpoint Policies to receive and send messages from and to queues in MQ while routing the message using a JavaCompute node.",
+      "durationText":"This tutorial takes approximately",
+      "durationTime":"10 minutes",
+	  "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+	  "resourceToOpen":"MQEndpointPolicyMain",
+	  "helpLink": 
+			{
+                "text": "Creating the default IBM integration queues in WebSphere MQ.",
+                "link": "com.ibm.etools.mft.doc/ah09090_.htm?lang=en"
+            }
+    },
+    "pageDetails":
+    {
+      "topicsName":"Tutorial Topics",
+	  "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+      "topicList":
+      [
+        {
+          "title":"MQ Input/Output Nodes"
+        },
+        {
+          "title":"MQEndpoint Policies"
+        }
+      ],
+      "outcomesName":"Learning outcomes",
+	  "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+      "outcomeList":
+      [
+        {
+          "title":"Use XML and Windows commands to create a policy within IIB."
+        },
+		{
+          "title":"Alter a message flow to route messages using a policy instead of the node properties."
+        }
+      ],
+      "summary":
+        {
+          "overviewName":"OVERVIEW",
+		  "_overviewComment": "A description of what happens in this tutorial, and an optional short explanation of the IIB concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+          "sections":
+          [
+            {
+            "section":"This tutorial follows on from the previous tutorial - 'Interacting with WebSphere MQ using MQ node properties'."
+            },
+			{
+            "section":"Here you will learn how to alter a node to route messages passed between IBM Integration Bus and WebSphere MQ using policies."
+            },
+            {
+            "section":"A policy is a set of instructions that can be connected to a node. They contain specific routing instructions which will override any previous settings on the node."
+            },
+            {
+            "section":"In the last tutorial you configured the node properties on each node to route it to a specific queue. In this tutorial you will create two policies and connect them to nodes to see how messages are routed differently."
+            }
+          ]
+        },
+		"helpLinks": 
+		{
+		"title": "Find out more",
+		"details" :
+		  [
+			{
+			"title":"Knowledge Center link to ",
+			"description":"Configuring Connections to MQ.",
+			"link":"com.ibm.etools.mft.doc/bc28610_.htm"
+			}			
+		  ]
+		}
+    },
+      "pageSteps":
+    {
+        "create":
+        {
+          "overview":
+          {
+            "name":"Create",
+            "heading":"Import the Message Flow",
+			"_createComment": "A description of what will happen when the user clicks Import.",
+            "sections":
+					[
+                        {
+							"section": "Click on the Import link to create and open the MQEndpointPolicyMain project in your workspace."
+						},
+						{
+							"section": "The MQEndpointPolicyMain.msgflow message flow should open. If not then it can be located in the Application Development area on the left."
+						},
+						{
+							"section": "There are a few different ways to implement a policy. One way is to click on the output node, go to its properties and click on policy. There is then an option to generate a policy. The method you are going to use in this tutorial is to create a policy from an XML file using command prompts."
+						},
+						{
+							"section": "Now click on the Prepare tab to see how to set up this flow and configure the policies."
+						}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                       {
+						"title": "Knowledge Center",
+						"description": "Developing integration solutions from scratch.",
+						"link": "com.ibm.etools.mft.doc/bi12002_.htm?lang=en",
+						"type": "web"
+						}	
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "heading": "Configuring the MQEndpoint policies and connecting them to the nodes in your flow.",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": 
+					[
+                        {
+                            "section": "For this tutorial to work you must have already set up the appropriate queues in WebSphere MQ. If not then go back and complete the previous tutorial 'Interacting with WebSphere MQ using MQ node properties'."
+                        },
+                        {
+                            "section": "There are two XML files in the project file - ClientPolicy.xml and ServerPolicy.xml. The client policy is configured to connect to a remote queue and the server policy connects to a local queue."                            
+                        },
+                        {
+                            "section": "To be able to connect the policies to a node you must first create them in the registry of the integration node you are deploying the application to. To do this follow these instructions:",
+                            "steps":
+                            {
+                                "type": "unordered",
+			                    "details": 
+			                    [
+						            {
+							            "details": "Enter the following command on IBM Integration Console, changing the INTEGRATIONNODENAME to the name of your Integration node and changing the PATHTOCLIENTPOLICY.xml to the location of ClientPolicy.xml (this can be found by right-clicking the file and selecting properties). The do the same for the Server Policy, changing CLIENT_POLICY text to SERVER_POLICY.",
+											"substeps": 
+											{
+												"type": "unordered",
+												"details": 
+												[
+													{
+														"details": "mqsicreatepolicy INTEGRATIONNODENAME -t MQEndpoint -l CLIENT_POLICY -f PATHTOCLIENTPOLICY.xml"
+													}
+												]
+											}
+									
+									},
+									{
+							            "details": "On the Integration Registries tab (Window -> Show View -> Integration Registries) you should now see the policies you have just created under the Integration Node you created them on (you may need to refresh the window). Now you can attach them to the MQ nodes."
+						            },
+									{
+							            "details": "To show the effect of the policy we are going to connect the CLIENT_POLICY to the MQLocalOutput node and the SERVER_POLICY to the MQRemoteOutput node as this will swap the queues they are connected to. Firstly, right-click the CLIENT_POLICY and select Copy URL. Now click on the MQLocalOutput node, go to the Properties and click on Policy. Paste the URL into the Policy URL text box. Now do the same for MQRemoteOutput using the SERVER_POLICY URL."
+						            }									
+					            ]
+						    }
+						},	
+						{
+							"section": "Now the MQLocalOutput node will route to the remote queue and the MQRemoteOutput node will route to the local queue. Do not attach a policy to the MQFailureOutput node, instead just ensure that it is connected to the local queue - Failure_Output."
+						}                        
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[                       
+                        {
+							"title":"Knowledge Center link to ",
+							"description":"the MQEndpoint Policy.",
+							"link":"com.ibm.etools.mft.doc/bi62102_.htm"
+						}
+                    ]
+                },
+                "actions-remove": 
+				{
+				    "comment":" as the user needs to configure some of the properties on the flow in the create step, we cannot have a pre-built bar file, therefore cannot use the deploy action",
+                    "title": "Prepare Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Deploy",
+                            "method": "deployArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "run": 
+			{
+                "overview": 
+				{
+                    "name": "Run",
+                    "heading": "Follow these steps to complete the tutorial",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                    "sections": 
+					[
+                        {
+                            "section": "In this final section you will send a simple XML message through the flow you have developed and see how it is routed differently to the previous task.",
+                            "steps": 
+							{
+                                "type": "ordered",
+                                "details": 
+								[
+                                    {
+                                        "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start recording the message path through the flow."
+                                    },
+                                    {
+										"details":"Click the Send Message icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/sendMessage.png' alt='' /> to select a message to send to the flow."
+									},
+									{ 
+										"details":"Choose either the LocalMessage or RemoteMessage message and click Send. Your request message is sent to the MQRemoteInput node."
+									}
+								]
+							}
+						},
+						{
+							"section":"After the message has been processed, the message path is automatically highlighted on the message flow."
+						},
+						{
+							"section":"Click on any connection to see the data that passed through that connection. You can see that the request (input) message data has a field named ConnType. The response (output) message has been routed according to this."
+						},
+						{
+							"section":"To stop recording the message path through the flow, click the Return flow to edit mode icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/stopFlowExerciser.png' alt='Return flow to edit mode' />."
+						},
+						{
+							"section":"If you go to WebSphere MQ now you will see that the message has been sent to the opposite queue than specified by the output node (i.e. If the message was sent to the MQLocalOutput node it will be in the Remote_Output queue). This is because the policy has overridden the properties."
+						}
+					]
+				},
+					"helpLinks": 
+				{
+					"title": "Find out more",
+					"details" :
+					[
+						{
+						"title":"Knowledge Center link to ",
+						"description":"Developing integration solutions by using applications.",
+						"link":"com.ibm.etools.mft.doc/bi12002_.htm"
+						},
+						{
+						"title":"Knowledge Center link to ",
+						"description":"Testing your message flow by using the Flow exerciser.",
+						"link":"com.ibm.etools.mft.doc/rt26110_.htm"
+						},
+						{
+						"title":"Knowledge Center link to ",
+						"description":"The MQEndpoint Policy",
+						"link":"com.ibm.etools.mft.doc/bi62102_.htm"
+						}
+					]
+				},				
+			"exits": 
+			{
+				"title": "Run Exits",
+				"details": 
+				[
+					{
+						"name": "Clean Up",
+						"description": "Clean up and remove any changes in your workspace made by the tutorial.",
+						"method": "cleanUp()"
+					}
+				]
+			}
+        } 
+    }
+  }
+}

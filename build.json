@@ -1,0 +1,8 @@
+{    
+    "main" : 
+	{
+      "project" : "MQEnpointPolicyTutorial",
+      "artefact": "MQEnpointPolicyMain.msgflow",
+      "editor"  : "flow"
+    }
+  }

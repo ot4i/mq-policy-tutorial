@@ -6,19 +6,19 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQEndpointPolicyTutorial/icons/full/obj16/MQEndpointPolicyMain.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQEndpointPolicyTutorial/icons/full/obj30/MQEndpointPolicyMain.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="97,181" queueName="Remote_Input" connection="CLIENT" destinationQueueManagerName="Tutorial_QM_Remote" queueManagerHostname="9.174.22.175" listenerPortNumber="1001" channelName="IIB.CLNT.CONN" messageDomainProperty="XMLNSC">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="97,181" queueName="REMOTE_INPUT" connection="CLIENT" destinationQueueManagerName="Tutorial_QM_Remote" queueManagerHostname="localhost" listenerPortNumber="1001" channelName="IIB.CLNT.CONN" messageDomainProperty="XMLNSC">
         <translation xmi:type="utility:ConstantString" string="MQRemoteInput"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="492,253" queueName="Remote_Output" connection="CLIENT" destinationQueueManagerName="Tutorial_QM_Remote" queueManagerHostname="9.174.22.175" listenerPortNumber="1001" channelName="IIB.CLNT.CONN" policyUrl="/apiv1/policy/MQEndpoint/SERVER_POLICY">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="492,253" queueName="REMOTE_OUTPUT" connection="CLIENT" destinationQueueManagerName="Tutorial_QM_Remote" queueManagerHostname="localhost" listenerPortNumber="1001" channelName="IIB.CLNT.CONN" policyUrl="/apiv1/policy/MQEndpoint/SERVER_POLICY">
         <translation xmi:type="utility:ConstantString" string="MQRemoteOutput"/>
       </nodes>
       <nodes xmi:type="ComIbmJavaCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="316,181" javaClass="MQEndpointPolicyMain_JavaCompute">
         <translation xmi:type="utility:ConstantString" string="Java Compute"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="496,106" queueName="Failure_Output" destinationQueueManagerName="Tutorial_QM_Local">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="496,106" queueName="FAILURE_OUTPUT" destinationQueueManagerName="Tutorial_QM_Local">
         <translation xmi:type="utility:ConstantString" string="MQFailureOutput"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="500,181" queueName="Local_Output" destinationQueueManagerName="Tutorial_QM_Local" policyUrl="/apiv1/policy/MQEndpoint/CLIENT_POLICY">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="500,181" queueName="LOCAL_OUTPUT" destinationQueueManagerName="Tutorial_QM_Local" policyUrl="/apiv1/policy/MQEndpoint/CLIENT_POLICY">
         <translation xmi:type="utility:ConstantString" string="MQLocalOutput"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>

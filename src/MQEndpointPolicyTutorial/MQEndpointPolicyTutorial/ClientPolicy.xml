@@ -1,0 +1,11 @@
+<policy type="MQEndpoint">
+  <policyProperties>
+    <mqConnectionDetailsPolicy>
+      <connection>CLIENT</connection>
+      <destinationQueueManagerName>Tutorial_QM_Remote</destinationQueueManagerName>
+      <queueManagerHostname>localhost</queueManagerHostname>
+      <listenerPortNumber>1001</listenerPortNumber>
+      <channelName>IIB.CLNT.CONN</channelName>
+    </mqConnectionDetailsPolicy>
+  </policyProperties>
+</policy>

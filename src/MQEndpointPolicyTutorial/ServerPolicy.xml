@@ -1,0 +1,8 @@
+<policy type="MQEndpoint">
+  <policyProperties>
+	<mqConnectionDetailsPolicy>
+	  <connection>SERVER</connection>
+	  <destinationQueueManagerName>Tutorial_QM_Local</destinationQueueManagerName>
+	</mqConnectionDetailsPolicy>
+  </policyProperties>
+</policy>

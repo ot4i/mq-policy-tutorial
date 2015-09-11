@@ -2,7 +2,7 @@
     "main" : 
 	{
       "project" : "MQEndpointPolicyTutorial",
-      "artefact": "MQEnpointPolicyMain.msgflow",
+      "artefact": "MQEndpointPolicyMain.msgflow",
       "editor"  : "flow"
     }
   }

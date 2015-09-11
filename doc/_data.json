@@ -76,7 +76,7 @@
           "sections":
           [
             {
-            "section":"This tutorial follows on from the previous tutorial - 'Interacting with WebSphere MQ using MQ node properties'."
+            "section":"This tutorial follows on from the previous tutorial - 'Interacting with WebSphere MQ using MQ Node Properties and Routing using a JavaCompute Node'."
             },
 			{
             "section":"Here you will learn how to alter a node to route messages passed between IBM Integration Bus and WebSphere MQ using policies."
@@ -175,7 +175,7 @@
 			                    "details": 
 			                    [
 						            {
-							            "details": "Enter the following command on IBM Integration Console, changing the <span class='cmdname'>INTEGRATIONNODENAME</span> to the name of your Integration node and changing the <span class='cmdname'>PATHTOCLIENTPOLICY.xml</span> to the location of ClientPolicy.xml (this can be found by right-clicking the file and selecting properties). The do the same for the Server Policy, changing <span class='cmdname'>CLIENT_POLICY</span> text to <span class='cmdname'>SERVER_POLICY</span>.",
+							            "details": "Enter the following command on IBM Integration Console, changing the <span class='cmdname'>INTEGRATIONNODENAME</span> to the name of your Integration node and changing the <span class='cmdname'>PATHTOCLIENTPOLICY.xml</span> to the location of ClientPolicy.xml (this can be found by right-clicking the file and selecting properties). Then do the same for the Server Policy, changing <span class='cmdname'>CLIENT_POLICY</span> text to <span class='cmdname'>SERVER_POLICY</span> and the <span class='cmdname'>PATHTOCLIENTPOLICY.xml</span> to the location of ServerPolicy.xml.",
 											"substeps": 
 											{
 												"type": "unordered",
